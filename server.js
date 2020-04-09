@@ -2,8 +2,11 @@ const express = require('express');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
 const profiles = require('./routes/profiles');
+const connectDB = require('./config/db');
 
 const app = express();
+
+connectDB();
 
 app.get('/', (req, res) => {
   res.send('You are a boss man, you can do it');
