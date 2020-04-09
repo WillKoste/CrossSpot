@@ -9,6 +9,8 @@ const app = express();
 
 connectDB();
 
+app.use(express.json({extended: false}));
+
 app.get('/', (req, res) => {
   res.send('You are a boss man, you can do it');
 });
