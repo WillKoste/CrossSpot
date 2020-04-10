@@ -3,6 +3,8 @@ const router = express.Router();
 const {check, validationResult} = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const User = require('../../models/User');
 
@@ -25,7 +27,7 @@ router.post('/', [
     let user = await User.findOne({email});
 
     if(user){
-      res.status(400).json({errors: [{msg: 'Email is already in use'}]});
+      return res.status(400).json({errors: [{msg: 'Email is already in use'}]});
     }
 
     const avatar = gravatar.url(email, {
@@ -46,7 +48,18 @@ router.post('/', [
 
     await user.save();
 
-    res.send('User Saved');
+    const payload = {
+      user: {
+        id: user.id
+      }
+    }
+
+    jwt.sign(payload, config.get('jwtSecret'), {
+      expiresIn: 360000000
+    }, (err, token) => {
+      if(err) throw err;
+      res.json({token});
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
