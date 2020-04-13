@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://willkoste:My2dogs95@crossspot-28hd1.mongodb.net/test?retryWrites=true&w=majority",
-  "jwtSecret": "DoobieTheDogg"
+  "jwtSecret": "DoobieTheDogg",
+  "githubClientId": "b6805ae1339f348d9261",
+  "githubSecret": "53e057b7d106397b0505e0ee4490e440b1d16071"
 }
