@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "start": "node server",
-    "backend": "nodemon server"
+    "backend": "nodemon server",
+    "client": "npm start --prefix client",
+    "both": "concurrently \"npm run backend\" \"npm run client\""
   },
   "keywords": [],
   "author": "Will Koste",
