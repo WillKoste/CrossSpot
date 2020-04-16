@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
+import PropTypes from 'prop-types'
 
 const Landing = ({isAuthenticated}) => {
 
@@ -24,6 +25,10 @@ const Landing = ({isAuthenticated}) => {
       </div>
     </section>
   )
+}
+
+Landing.propTypes = {
+  isAuthenticated: PropTypes.bool
 }
 
 const mapStateToProps = state => ({

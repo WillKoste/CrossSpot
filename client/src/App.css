@@ -324,6 +324,7 @@ button {
 
 .navbar a:hover {
   color: var(--primary-color);
+  transition: .1s color ease-in;
 }
 
 .navbar .welcome span {
