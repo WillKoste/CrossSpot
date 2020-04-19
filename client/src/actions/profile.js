@@ -157,18 +157,20 @@ export const deleteEducation = (id) => async dispatch => {
 
 export const deleteAccount = () => async dispatch => {
   if(window.confirm("Are you sure you want to delete your account? This cannot be undone!")){
-    try {
-      await axios.delete(`/api/profile`);
-  
-      dispatch({type: CLEAR_PROFILE});
-      dispatch({type: DELETE_ACCOUNT});
-  
-      setAlert('Your account has been deleted');
-    } catch (err) {
-      dispatch({
-        type: PROFILE_ERROR,
-        payload: {msg: err.response.statusText, status:err.response.status}
-      });
+    if(window.confirm("You're being serious? :(")){
+      try {
+        await axios.delete(`/api/profile`);
+    
+        dispatch({type: CLEAR_PROFILE});
+        dispatch({type: DELETE_ACCOUNT});
+    
+        setAlert('Your account has been deleted');
+      } catch (err) {
+        dispatch({
+          type: PROFILE_ERROR,
+          payload: {msg: err.response.statusText, status:err.response.status}
+        });
+      }
     }
   }
   
