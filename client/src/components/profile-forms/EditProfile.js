@@ -40,7 +40,7 @@ const EditProfile = ({createProfile, getCurrentProfile, profile: {profile, loadi
       instagram: loading || !profile.social ? '' : profile.social.instagram
     });
     // eslint-disable-next-line
-  }, [loading]);
+  }, [loading, getCurrentProfile]);
 
   const {
     company, website, location, status, skills, githubusername, bio, twitter, facebook, linkedin, youtube, instagram
@@ -92,7 +92,7 @@ const EditProfile = ({createProfile, getCurrentProfile, profile: {profile, loadi
         </div>
         <div className="form-group">
           <input type="text" placeholder="* Skills" name="skills" value={skills} onChange={e => onChange(e)} />
-          <small className="form-text">Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)</small>
+          <small className="form-text">Please use comma separated values (eg. HTML, CSS, JavaScript, PHP)</small>
         </div>
         <div className="form-group">
           <input
